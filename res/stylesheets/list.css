@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400;500;600;700;800&display=swap");
+
+.lists {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.today-list {
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	margin-left: 20px;
+	width: 20%;
+	height: 500px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	padding: 1%;
+	backdrop-filter: blur(20px);
+	font-family: "Anek Malayalam", sans-serif;
+}
+
+.header-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "Anek Malayalam", sans-serif;
+}
+
+.display-list {
+	padding: 5px 8px;
+	color: white;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.3);
+	font-family: "Anek Malayalam", sans-serif;
+}
+
+.green {
+	background-color: rgba(0, 255, 0, 0.3) !important;
+}
+
+.content-list {
+	font-family: "Anek Malayalam", sans-serif;
+	display: block;
+	height: 85% !important;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+.title-list {
+	font-family: "Anek Malayalam", sans-serif;
+	font-size: 25px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: white;
+}
+
+.task {
+	font-family: "Anek Malayalam", sans-serif;
+	margin-bottom: 5px;
+	width: 100%;
+	font-size: 17px;
+	font-weight: 500;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 10px 0;
+	border-radius: 5px;
+	color: rgb(255, 255, 255);
+	user-select: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: 0.2s;
+}
+
+.task:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: 0.2s;
+}
+
+.delete-button {
+	margin-right: 10px;
+	padding: 4px;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	opacity: 0;
+	transition: all 0.2s ease;
+}
+
+.task:hover .delete-button {
+	opacity: 1 !important;
+}
+
+.delete-button:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.check-button {
+	background-color: rgba(0, 0, 0, 0.1);
+	margin-left: 10px;
+	padding: 4px;
+	border-radius: 3px;
+	transition: 0.25s;
+}
+
+.check-button:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.done {
+	font-style: italic;
+	text-decoration: line-through;
+	opacity: 35%;
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 5px;
+}
+
+#input-task {
+	font-family: "Anek Malayalam", sans-serif;
+	text-align: center;
+	margin: 10px 0px;
+	font-size: 18px;
+	font-weight: 500;
+	color: white;
+	background-color: rgba(10, 10, 10, 0.2);
+	border-radius: 10px;
+	text-decoration: none;
+	border: 0;
+	outline: 0;
+	opacity: 30%;
+	transition: 0.25s;
+	padding: 1%;
+	width: 98%;
+}
+
+#input-task::placeholder {
+	font-style: italic;
+	color: rgb(150, 150, 150);
+}
+
+#input-task:hover {
+	opacity: 75%;
+
+	border-radius: 3px;
+}
+
+#input-task:focus {
+	opacity: 100%;
+	border-radius: 3px;
+	background-color: rgba(0, 0, 0, 0.3);
+}

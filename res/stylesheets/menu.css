@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body {
+	font-family: "Roboto", sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image: url(/res/bg/bg1.jpg);
+	background-size: cover;
+}
+
+footer {
+	padding: 10px;
+	color: white;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 20px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.title {
+	text-align: center;
+	color: rgb(40, 40, 40);
+}
+
+.content {
+	display: block;
+	justify-content: center;
+}
+
+.list-app {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: 5px;
+	grid-row-gap: 20px;
+	text-align: center;
+	user-select: none;
+	margin: 20px;
+	padding: 1%;
+	width: 20%;
+	height: auto;
+	border-radius: 20px;
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(20px);
+	background-color: rgba(255, 255, 255, 0.1);
+	box-shadow: 0px 2px 15px 1px rgba(0, 0, 0, 0.4);
+}
+
+.app {
+	margin: auto auto;
+	color: rgb(40, 40, 40);
+	text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+}
+
+.app-img {
+	cursor: pointer;
+	padding: 10px;
+	width: 45px;
+	height: 45px;
+	border-radius: 20px;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.3);
+	box-shadow: 0px 2px 15px 1px rgba(0, 0, 0, 0.15);
+	transition: 0.15s;
+}
+
+.app-img:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+}
+
+.search-bar {
+	backdrop-filter: blur(20px);
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 35%;
+	height: 50px;
+	padding: 0px 20px;
+	border-radius: 50px;
+	outline: none;
+	color: rgb(40, 40, 40);
+	font-size: 20px;
+	font-weight: 500;
+	box-shadow: 0px 2px 15px 1px rgba(0, 0, 0, 0.25);
+	transition: 0.1s;
+	border: 2px solid rgba(255, 255, 255, 1);
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.search-bar:focus {
+	border: 2px solid rgba(255, 255, 255, 0.6);
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.app div[style="font-weight: 500; margin-top: 5px"] {
+	margin-top: 8px !important;
+	font-size: 14px;
+}
+
+.date {
+	margin: 20px 40px;
+	border-radius: 20px;
+}
+
+.horario {
+	user-select: none;
+	text-transform: uppercase;
+	display: block;
+	margin: auto;
+	font-size: 120px;
+	font-weight: 600;
+	color: rgb(40, 40, 40);
+	text-shadow: 0px 2px 15px rgba(0, 0, 0, 0.25);
+}
