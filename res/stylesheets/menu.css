@@ -4,7 +4,7 @@ body {
 	font-family: "Roboto", sans-serif;
 	margin: 0;
 	padding: 0;
-	background-image: url(res/bg/bg1.jpg);
+	background-image: url(../bg/bg1.jpg);
 	background-size: cover;
 }
 
