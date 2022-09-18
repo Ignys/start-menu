@@ -1,6 +1,12 @@
-let storage_number = Number(localStorage.getItem("storage_number"));
 let task_amount = 0;
 let doneTask_amount = 0;
+
+let task = {
+	amount: 0,
+	text: [],
+	checked: [],
+	id: [],
+};
 
 function createTask(storage_n, task_id, task_name, checked) {
 	$(".content-list").append(
@@ -22,47 +28,42 @@ function newTask(event) {
 		const task_name = input.value;
 		const task_id = String(task_name).replace(/ /g, "_");
 		input.value = "";
-		storage_number++;
-		createTask(storage_number, task_id, task_name, 0);
+		createTask(task_amount, task_id, task_name, 0);
 		saveNewTask(task_name, 0, event.target.parentNode.id);
 	}
 }
 
 function loadTask() {
-	for (let i = 1; i <= storage_number; i++) {
-		const task = JSON.parse(localStorage.getItem(i));
-		console.log(task);
-		if (task.day == getDay("today")) {
-			if (task !== "none") {
-				if (task.checked == 0) {
-					createTask(i, task.id, task.text, 0);
-				} else if (task.checked == 1) {
-					createTask(i, task.id, task.text, 1);
-				}
+	try {
+		const saved_task = JSON.parse(localStorage.getItem(getDay("today")));
+		console.log(saved_task);
+		for (let i = 0; i < saved_task.text.length; i++) {
+			if (saved_task.text[i] !== "deleted-task" && saved_task.id[i] !== "deleted-task") {
+				task.amount++;
+				task.checked.push(saved_task.checked[i]);
+				task.id.push(saved_task.id[i]);
+				task.text.push(saved_task.text[i]);
+				createTask(i, saved_task.id[i], saved_task.text[i], saved_task.checked[i]);
+				localStorage.setItem(getDay("today"), JSON.stringify(task));
 			}
+			console.log("Limpo");
 		}
+	} catch (error) {
+		console.log(error);
 	}
 }
 
 function saveNewTask(text, checked, day) {
-	const task_list = {
-		text: text,
-		checked: checked,
-		id: String(text).replace(/ /g, "_"),
-		day: getDay(day),
-	};
-	localStorage.setItem("storage_number", String(storage_number));
-	localStorage.setItem(storage_number, JSON.stringify(task_list));
+	task.text.push(text);
+	task.checked.push(checked);
+	task.id.push(String(text).replace(/ /g, "_"));
+	task.amount++;
+	localStorage.setItem(getDay("today"), JSON.stringify(task));
 }
 
-function refreshTask(text, checked, sn_id, day) {
-	const task_list = {
-		text: text,
-		checked: checked,
-		id: String(text).replace(/ /g, "_"),
-		day: getDay(day),
-	};
-	localStorage.setItem(sn_id, JSON.stringify(task_list));
+function refreshTask(check, item) {
+	task.checked[item] = check;
+	localStorage.setItem(getDay("today"), JSON.stringify(task));
 }
 
 /* Check or Uncheck Task */
@@ -87,12 +88,7 @@ document.addEventListener("click", function handleClick(event) {
 			taskDiv.classList = "task done";
 		}
 		checkBox.alt = checked;
-		refreshTask(
-			taskDiv.innerText,
-			checked,
-			taskDiv.id,
-			taskDiv.parentNode.parentNode.id
-		);
+		refreshTask(checked, taskDiv.id);
 	} else if (element.classList == "task" || element.classList == "task done") {
 		const checkBox = element.children[0];
 		const taskDiv = element;
@@ -111,12 +107,7 @@ document.addEventListener("click", function handleClick(event) {
 				doneTask_amount++;
 			}
 			checkBox.alt = checked;
-			refreshTask(
-				taskDiv.innerText,
-				checked,
-				taskDiv.id,
-				taskDiv.parentNode.parentNode.id
-			);
+			refreshTask(checked, taskDiv.id);
 		}
 	}
 	refreshDisplay();
@@ -128,7 +119,10 @@ function deleteTask(event) {
 	console.log(id_task);
 	console.log(btn.parentNode);
 	$("#" + id_task).remove();
-	localStorage.setItem(Number(id_task), JSON.stringify("none"));
+	/* 	localStorage.setItem(Number(id_task), JSON.stringify("none")); */
+	task.text[id_task] = "deleted-task";
+	task.id[id_task] = "deleted-task";
+	localStorage.setItem(getDay("today"), JSON.stringify(task));
 	task_amount--;
 	if (btn.parentNode.classList == "task done") {
 		doneTask_amount--;

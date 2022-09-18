@@ -6,120 +6,38 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Start menu - new tab</title>
-	<link rel="stylesheet" href="res/stylesheets/list.css" />
-	<link rel="stylesheet" href="res/stylesheets/menu.css">
-	<script src="res/scripts/menu.js"></script>
-	<script src="res/scripts/list.js"></script>
-	<script src="res/scripts/date.js"></script>
+	<link rel="stylesheet" href="/res/stylesheets/list.css" />
+	<link rel="stylesheet" href="/res/stylesheets/menu.css">
+	<script src="/res/scripts/menu.js"></script>
+	<script src="/res/scripts/list.js"></script>
+	<script src="/res/scripts/date.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<body onload="refreshTime(), loadTask(), refreshDisplay(), titleByDay()">
+<body onload="refreshTime(), loadTask(), refreshDisplay(), titleByDay(), getSavedApps()">
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<div class="modal-body">
+				Website name
+				<input id="website-name" type="text" class="modal-input" placeholder="Example">
+				Website URL
+				<input id="website-url" type="text" class="modal-input" placeholder="https://www.example.com/">
+				Icon URL
+				<input id="icon-url" type="text" class="modal-input" placeholder="https://www.example.com/icon.jpg">
+			</div>
+			<div class="modal-footer">
+				<span onclick="closeModal()" class="modal-button">Cancel</span>
+				<span onclick="createApp()" class="modal-button">Apply</span>
+			</div>
+		</div>
+	</div>
 	<div class="header">
-		<div class="list-app">
-			<div class="app">
-				<a href="http://www.facebook.com">
-					<div class="app-img">
-						<img src="https://files.tecnoblog.net/wp-content/uploads/2022/02/facebook-logotipo.png"
-							width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Facebook</div>
-			</div>
-			<div class="app">
-				<a href="http://www.twitter.com">
-					<div class="app-img">
-						<img src="https://cdn-icons-png.flaticon.com/512/5968/5968823.png" width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Twitter</div>
-			</div>
-			<div class="app">
-				<a href="https://gamersclub.com.br/">
-					<div class="app-img">
-						<img src="https://miro.medium.com/max/256/1*xcKichEGuO5oZStprNQN6w.png" width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Gamers Club</div>
-			</div>
-			<div class="app">
-				<a href="https://instagram.com/?theme=dark">
-					<div class="app-img">
-						<img draggable="false"
-							src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
-							width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Instagram</div>
-			</div>
-			<div class="app">
-				<a href="https://youtube.com/">
-					<div class="app-img">
-						<img src="https://www.sintrajud.org.br/wp-content/uploads/2020/10/youtube.png" width="100%"
-							alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Youtube</div>
-			</div>
-			<div class="app">
-				<a href="https://twitch.tv/">
-					<div class="app-img">
-						<img src="https://cdn.pixabay.com/photo/2021/12/10/16/38/twitch-6860918_960_720.png"
-							width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Twitch</div>
-			</div>
-			<div class="app">
-				<a href="https://notion.so/">
-					<div class="app-img">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" width="100%"
-							alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Notion</div>
-			</div>
-			<div class="app">
-				<a href="https://netflix.com/">
-					<div class="app-img">
-						<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Netflix_icon.svg/1200px-Netflix_icon.svg.png"
-							width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Netflix</div>
-			</div>
-			<div class="app">
-				<a href="https://ignys.github.io/todolist/">
-					<div class="app-img">
-						<img src="https://fatorrrh.com.br/wp-content/uploads/2020/11/2705.png" width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Daily List</div>
-			</div>
-			<div class="app">
-				<a href="https://mail.proton.me/">
-					<div class="app-img">
-						<img src="res/icons/proton-mail.png" width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Proton Mail</div>
-			</div>
-			<div class="app">
-				<a href="https://hltv.org/">
-					<div class="app-img">
-						<img src="https://play-lh.googleusercontent.com/chI-8vX4CIbO-pm14tb5UAjip20CwmytQPdz8sBmqNjPqTp1tptpBOZc-aGyYqDesw"
-							width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">HLTV</div>
-			</div>
-			<div class="app">
-				<a href="https://www.warmupserver.net/">
-					<div class="app-img">
-						<img src="res/icons/warmup.png" width="100%" alt="" />
-					</div>
-				</a>
-				<div style="font-weight: 500; margin-top: 5px">Warmup</div>
+		<div id="list-app" class="list-app">
+			<div id="app-creator-button" class="app">
+				<div class="app-img" onclick="openModal()">
+					<img src="/res/svg/plus.svg" width="100%" alt="" />
+				</div>
+				<div style="font-weight: 500; margin-top: 5px">Add link</div>
 			</div>
 		</div>
 		<div class="date">
