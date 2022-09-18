@@ -23,7 +23,7 @@ function appFormat(app_name, icon_url, website_url) {
 		$("#list-app").append(`
  		<div id="app-creator-button" class="app">
 			<div class="app-img" onclick="openModal()">
-					<img src="/res/svg/plus.svg" width="100%" alt="" />
+					<img src="res/svg/plus.svg" width="100%" alt="" />
 			</div>
 			<div style="font-weight: 500; margin-top: 5px">Add link</div>
 		</div>
