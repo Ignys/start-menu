@@ -118,7 +118,7 @@ function deleteTask(event) {
 	const id_task = btn.parentNode.id;
 	console.log(id_task);
 	console.log(btn.parentNode);
-	$("#" + id_task).remove();
+	$(".task").remove("#" + id_task);
 	/* 	localStorage.setItem(Number(id_task), JSON.stringify("none")); */
 	task.text[id_task] = "deleted-task";
 	task.id[id_task] = "deleted-task";

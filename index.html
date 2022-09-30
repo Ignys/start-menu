@@ -14,19 +14,42 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<body onload="refreshTime(), loadTask(), refreshDisplay(), titleByDay(), getSavedApps()">
-	<div id="modal" class="modal">
+<body onload="refreshTime(), loadTask(), refreshDisplay(), titleByDay(), getSavedApps()" oncontextmenu="return false;">
+	<div id="settings-modal" class="modal">
+		<div class="modal-header">
+			Settings
+		</div>
 		<div class="modal-content">
 			<div class="modal-body">
 				Website name
-				<input id="website-name" type="text" class="modal-input" placeholder="Example">
+				<input id="new-website-name" type="text" class="modal-input" placeholder="Example">
 				Website URL
-				<input id="website-url" type="text" class="modal-input" placeholder="https://www.example.com/">
+				<input id="new-website-url" type="text" class="modal-input" placeholder="https://www.example.com/">
 				Icon URL
-				<input id="icon-url" type="text" class="modal-input" placeholder="https://www.example.com/icon.jpg">
+				<input id="new-icon-url" type="text" class="modal-input" placeholder="https://www.example.com/icon.jpg">
+			</div>
+			<div id='settings-modal-footer' class="modal-footer">
+				<!-- 				<span onclick="closeModal('settings')" class="modal-button">Cancel</span>
+				<span onclick="removeApp()" class="modal-button">Remove</span>
+				<span onclick="editApp()" class="modal-button">Apply</span> -->
+			</div>
+		</div>
+	</div>
+	<div id="add-modal" class="modal">
+		<div class="modal-header">
+			Add link
+		</div>
+		<div class="modal-content">
+			<div class="modal-body">
+				Website name
+				<input id="add-website-name" type="text" class="modal-input" placeholder="Example">
+				Website URL
+				<input id="add-website-url" type="text" class="modal-input" placeholder="https://www.example.com/">
+				Icon URL
+				<input id="add-icon-url" type="text" class="modal-input" placeholder="https://www.example.com/icon.jpg">
 			</div>
 			<div class="modal-footer">
-				<span onclick="closeModal()" class="modal-button">Cancel</span>
+				<span onclick="closeModal('add')" class="modal-button">Cancel</span>
 				<span onclick="createApp()" class="modal-button">Apply</span>
 			</div>
 		</div>
@@ -34,15 +57,15 @@
 	<div class="header">
 		<div id="list-app" class="list-app">
 			<div id="app-creator-button" class="app">
-				<div class="app-img" onclick="openModal()">
-					<img src="res/svg/plus.svg" width="100%" alt="" />
+				<div class="app-img" onclick="openModal('add')">
+					<img src="/res/svg/plus.svg" width="100%" alt="" />
 				</div>
 				<div style="font-weight: 500; margin-top: 5px">Add link</div>
 			</div>
 		</div>
 		<div class="date">
 			<div class="horario">
-				<div id="clock-text" style="display: flex; justify-content: center;">17:28:60</div>
+				<div id="clock-text" style="display: flex; justify-content: center;">00:00</div>
 				<div id="day-text"
 					style="font-size: 40px; display: flex; justify-content: center; top: -20px; position: relative;">
 					quinta-feira</div>
@@ -58,6 +81,7 @@
 		<div class="content-list">
 		</div>
 	</div>
+	<script src="res/scripts/context.js"></script>
 </body>
 
 </html>
