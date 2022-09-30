@@ -14,7 +14,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<body onload="refreshTime(), loadTask(), refreshDisplay(), titleByDay(), getSavedApps()" oncontextmenu="return false;">
+<body onload="refreshTime(), loadTask(), refreshDisplay(), titleByDay(), getSavedApps()">
 	<div id="settings-modal" class="modal">
 		<div class="modal-header">
 			Settings
@@ -55,10 +55,10 @@
 		</div>
 	</div>
 	<div class="header">
-		<div id="list-app" class="list-app">
+		<div id="list-app" class="list-app" oncontextmenu="return false;">
 			<div id="app-creator-button" class="app">
 				<div class="app-img" onclick="openModal('add')">
-					<img src="/res/svg/plus.svg" width="100%" alt="" />
+					<img src="res/svg/plus.svg" width="100%" alt="" />
 				</div>
 				<div style="font-weight: 500; margin-top: 5px">Add link</div>
 			</div>

@@ -55,10 +55,10 @@ function getSavedApps() {
 						app.icon_url.push(saved_app.icon_url[checked_apps]);
 						app.website_url.push(saved_app.website_url[checked_apps]);
 						app.total_apps++;
-						localStorage.setItem("app", JSON.stringify(app));
 					}
 				}
 			}
+			localStorage.setItem("app", JSON.stringify(app));
 		}
 		for (let index = 0; index < app.name.length; index++) {
 			appFormat(app.name[index], app.icon_url[index], app.website_url[index], app.id[index]);
